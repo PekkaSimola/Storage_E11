@@ -1,0 +1,35 @@
+﻿@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Produkttabell</h1>
+
+<p>
+    <a asp-action="Create">Lägg till produkt</a>
+</p>
+
+<form asp-action="Filter">
+    <row> 
+        <div class="col-md-5">
+            <div class="input-group mb-2">
+
+                <input type="text" class="form-control" asp-for="Product" placeholder="Sök på produktnamn"/>
+                
+                <div class="input-group-append">  
+                    <select class="form-control" asp-for="Category" asp-items="@Model.Categories">
+                        <option selected="selected" value="">Välj kategori</option>
+                    </select>
+                </div>
+
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-secondary"><i class="fa fa-search">&emsp;</i><strong>Sök</strong></button>
+                </div>
+
+            </div>
+        </div>
+    </row> 
+</form>
+
+<partial name="IndexPartial" model="@Model.Products" />
